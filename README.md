@@ -2,9 +2,9 @@
 
 **Disciplina:** AI for Robotic Process Automation (RPA + IA) — Global Solution 2026.2  
 **Integrantes do Grupo:**
-- [PREENCHER NOME COMPLETO 1] — RM: [PREENCHER RM]
-- [PREENCHER NOME COMPLETO 2] — RM: [PREENCHER RM]
-- [PREENCHER NOME COMPLETO 3] — RM: [PREENCHER RM]
+- Davi Gravina – RM 565619
+- Henry Andrade Browne – RM 562089
+- Luiz Felipe dos Santos Tragi – RM 565009
 
 ---
 
