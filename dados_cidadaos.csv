@@ -1,0 +1,16 @@
+id_solicitacao,nome_cidadao,email_cidadao,cep,relato,categoria_esperada
+SOL-001,Ana Souza,ana.sintetico@exemplo.com,01001000,Existe um buraco enorme no asfalto da rua causando risco de acidentes aos carros,Infraestrutura
+SOL-002,Carlos Lima,carlos.sintetico@exemplo.com,20040020,Dois postes da avenida estao com a lampada queimada deixando a calcada totalmente escura a noite,Iluminacao Publica
+SOL-003,Mariana Alves,mariana.sintetico@exemplo.com,30130010,Acumulo de entulho e lixo domestico descartado irregularmente na esquina da praca,Limpeza Urbana
+SOL-004,Pedro Santos,pedro.sintetico@exemplo.com,80020310,Vazamento de esgoto a ceu aberto proximo ao posto de saude com mau cheiro e risco de doencas,Saude e Saneamento
+SOL-005,Julia Rocha,julia.sintetico@exemplo.com,40020000,Calcada quebrada e bueiro sem tampa colocando pedestres e idosos em perigo,Infraestrutura
+SOL-006,Lucas Mendes,lucas.sintetico@exemplo.com,70040010,Iluminacao publica piscando sem parar na travessa residencial ha tres dias,Iluminacao Publica
+SOL-007,Fernanda Costa,fernanda.sintetico@exemplo.com,60060440,Caminhao da coleta de lixo nao passou esta semana e os sacos estao rasgados na rua,Limpeza Urbana
+SOL-008,Rafael Oliveira,rafael.sintetico@exemplo.com,90010150,Foco de agua parada com larvas de mosquito transmissor da dengue em terreno baldio,Saude e Saneamento
+SOL-009,Beatriz Nunes,beatriz.sintetico@exemplo.com,50010000,Cratera aberta apos a chuva bloqueando metade da faixa de rolamento da via,Infraestrutura
+SOL-010,Thiago Martins,thiago.sintetico@exemplo.com,69005010,Falta de iluminacao no ponto de onibus deixa trabalhadores inseguros de madrugada,Iluminacao Publica
+SOL-001,Ana Souza,ana.sintetico@exemplo.com,01001000,Existe um buraco enorme no asfalto da rua causando risco de acidentes aos carros,Infraestrutura
+SOL-011,Camila Dias,camila.sintetico@exemplo.com,99999999,Galhos de arvore e folhas bloqueando a passagem na calcada apos ventania,Limpeza Urbana
+SOL-012,Bruno Ferreira,bruno.sintetico@exemplo.com,01001000,Preciso de ajuda aqui na rua por favor verificar urgente no local,Revisao Humana
+SOL-013,Diego Silva,diego.sintetico@exemplo.com,123,Poste caido na rua,Iluminacao Publica
+SOL-014,Elena Gomes,elena.sintetico@exemplo.com,01001000,,Infraestrutura
