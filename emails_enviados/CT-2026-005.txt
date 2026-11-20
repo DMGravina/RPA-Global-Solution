@@ -1,0 +1,13 @@
+PARA: julia.sintetico@exemplo.com
+ASSUNTO: [CitizenTech] Protocolo CT-2026-005 - Atendimento Registrado
+
+Olá, Julia Rocha!
+
+Sua solicitação cidadã foi recebida e processada pelo nosso robô de triagem inteligente.
+- Protocolo: CT-2026-005
+- Setor Encaminhado: Revisao Humana
+- Prioridade Estimada: PENDENTE_TRIAGEM
+
+Acompanhe o andamento pelo portal CitizenTech.
+Atenciosamente,
+Equipe CitizenTech RPA

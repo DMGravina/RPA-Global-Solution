@@ -1,0 +1,13 @@
+PARA: pedro.sintetico@exemplo.com
+ASSUNTO: [CitizenTech] Protocolo CT-2026-004 - Atendimento Registrado
+
+Olá, Pedro Santos!
+
+Sua solicitação cidadã foi recebida e processada pelo nosso robô de triagem inteligente.
+- Protocolo: CT-2026-004
+- Setor Encaminhado: Saude e Saneamento
+- Prioridade Estimada: ALTA
+
+Acompanhe o andamento pelo portal CitizenTech.
+Atenciosamente,
+Equipe CitizenTech RPA

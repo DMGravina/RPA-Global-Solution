@@ -1,0 +1,13 @@
+PARA: lucas.sintetico@exemplo.com
+ASSUNTO: [CitizenTech] Protocolo CT-2026-006 - Atendimento Registrado
+
+Olá, Lucas Mendes!
+
+Sua solicitação cidadã foi recebida e processada pelo nosso robô de triagem inteligente.
+- Protocolo: CT-2026-006
+- Setor Encaminhado: Iluminacao Publica
+- Prioridade Estimada: BAIXA
+
+Acompanhe o andamento pelo portal CitizenTech.
+Atenciosamente,
+Equipe CitizenTech RPA

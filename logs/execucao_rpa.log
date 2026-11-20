@@ -1,0 +1,28 @@
+2026-11-19 23:50:52,125 | INFO | === INICIANDO ROBÔ CITIZENTECH RPA + IA ===
+2026-11-19 23:50:52,126 | WARNING | [Resiliência] Tratamento validado: 'arquivo_que_nao_existe.csv' ausente capturado sem interromper o robô.
+2026-11-19 23:50:52,180 | INFO | [Pandas] Total de linhas lidas de 'dados_cidadaos.csv': 15
+2026-11-19 23:50:52,184 | WARNING | [Idempotência] 1 registro(s) duplicado(s) ignorado(s) pelo Pandas.
+2026-11-19 23:50:52,341 | INFO | [IA -> Revisão Humana] SOL-001 encaminhado para fila humana (confiança=0.46).
+2026-11-19 23:50:52,348 | INFO | [Concluído] SOL-001 -> Protocolo: CT-2026-001 | Categoria: Revisao Humana (0.46) | Prioridade: PENDENTE_TRIAGEM | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:52,423 | INFO | [IA -> Revisão Humana] SOL-002 encaminhado para fila humana (confiança=0.47).
+2026-11-19 23:50:52,431 | INFO | [Concluído] SOL-002 -> Protocolo: CT-2026-002 | Categoria: Revisao Humana (0.47) | Prioridade: PENDENTE_TRIAGEM | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:52,506 | INFO | [Concluído] SOL-003 -> Protocolo: CT-2026-003 | Categoria: Limpeza Urbana (0.57) | Prioridade: BAIXA | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:52,578 | INFO | [Concluído] SOL-004 -> Protocolo: CT-2026-004 | Categoria: Saude e Saneamento (0.66) | Prioridade: ALTA | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:52,647 | WARNING | [API ViaCEP] CEP inexistente na base pública: 40020000
+2026-11-19 23:50:52,650 | INFO | [IA -> Revisão Humana] SOL-005 encaminhado para fila humana (confiança=0.55).
+2026-11-19 23:50:52,658 | INFO | [Concluído] SOL-005 -> Protocolo: CT-2026-005 | Categoria: Revisao Humana (0.55) | Prioridade: PENDENTE_TRIAGEM | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:52,731 | INFO | [Concluído] SOL-006 -> Protocolo: CT-2026-006 | Categoria: Iluminacao Publica (0.58) | Prioridade: BAIXA | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:52,802 | INFO | [Concluído] SOL-007 -> Protocolo: CT-2026-007 | Categoria: Limpeza Urbana (0.61) | Prioridade: BAIXA | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:52,868 | INFO | [Concluído] SOL-008 -> Protocolo: CT-2026-008 | Categoria: Saude e Saneamento (0.60) | Prioridade: ALTA | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:52,939 | INFO | [IA -> Revisão Humana] SOL-009 encaminhado para fila humana (confiança=0.44).
+2026-11-19 23:50:52,946 | INFO | [Concluído] SOL-009 -> Protocolo: CT-2026-009 | Categoria: Revisao Humana (0.44) | Prioridade: PENDENTE_TRIAGEM | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:53,013 | INFO | [IA -> Revisão Humana] SOL-010 encaminhado para fila humana (confiança=0.52).
+2026-11-19 23:50:53,024 | INFO | [Concluído] SOL-010 -> Protocolo: CT-2026-010 | Categoria: Revisao Humana (0.52) | Prioridade: PENDENTE_TRIAGEM | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:53,108 | WARNING | [API ViaCEP] CEP inexistente na base pública: 99999999
+2026-11-19 23:50:53,110 | INFO | [IA -> Revisão Humana] SOL-011 encaminhado para fila humana (confiança=0.45).
+2026-11-19 23:50:53,117 | INFO | [Concluído] SOL-011 -> Protocolo: CT-2026-011 | Categoria: Revisao Humana (0.45) | Prioridade: PENDENTE_TRIAGEM | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:53,118 | INFO | [IA -> Revisão Humana] SOL-012 encaminhado para fila humana (confiança=0.31).
+2026-11-19 23:50:53,125 | INFO | [Concluído] SOL-012 -> Protocolo: CT-2026-012 | Categoria: Revisao Humana (0.31) | Prioridade: PENDENTE_TRIAGEM | E-mail: SIMULADO_LOCAL
+2026-11-19 23:50:53,126 | WARNING | [Dado Inválido] SOL-013 descartado com segurança -> Motivo: CEP inválido (123)
+2026-11-19 23:50:53,127 | WARNING | [Dado Inválido] SOL-014 descartado com segurança -> Motivo: Relato ausente ou curto demais (< 10 caracteres)
+2026-11-19 23:50:53,127 | INFO | === EXECUÇÃO FINALIZADA | Acurácia IA: 50.0% | Relatório: relatorio_validacao.md ===

@@ -1,0 +1,13 @@
+PARA: mariana.sintetico@exemplo.com
+ASSUNTO: [CitizenTech] Protocolo CT-2026-003 - Atendimento Registrado
+
+Olá, Mariana Alves!
+
+Sua solicitação cidadã foi recebida e processada pelo nosso robô de triagem inteligente.
+- Protocolo: CT-2026-003
+- Setor Encaminhado: Limpeza Urbana
+- Prioridade Estimada: BAIXA
+
+Acompanhe o andamento pelo portal CitizenTech.
+Atenciosamente,
+Equipe CitizenTech RPA
