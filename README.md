@@ -23,7 +23,7 @@ Este protótipo automatiza o fluxo de ponta a ponta como um robô real:
 ## 2. Estrutura do Repositório
 
 ```text
-citizentech-rpa/
+RPA-Global-Solution/
 ├── .env.example            # Modelo de variáveis de ambiente (sem credenciais reais)
 ├── requirements.txt        # Lista de bibliotecas Python gratuitas utilizadas
 ├── dados_cidadaos.csv      # Dataset sintético rotulado para testes e validação
@@ -47,8 +47,9 @@ citizentech-rpa/
 ### Etapa 1: Acessar a pasta do projeto
 Abra o terminal (Prompt de Comando, PowerShell ou Terminal Linux/Mac) e navegue até a pasta raiz do repositório:
 ```bash
-cd citizentech-rpa
+cd RPA-Global-Solution
 ```
+Se o diretório local tiver sido renomeado, substitua o nome acima pelo nome da pasta em que o projeto foi clonado.
 
 ### Etapa 2: Criar e ativar o ambiente virtual (`venv`)
 Isolar as dependências evita conflitos com outros projetos Python:
@@ -86,6 +87,7 @@ Nenhuma credencial fica salva no código-fonte. Crie o arquivo `.env` local a pa
 - `ARQUIVO_ENTRADA=dados_cidadaos.csv`: arquivo CSV com a fila de demandas sintéticas.
 - `BANCO_SQLITE=citizentech_rpa.db`: nome do arquivo de banco de dados local que será criado.
 - `LIMIAR_CONFIANCA_IA=0.55`: confiança mínima exigida da IA; abaixo disso, o pedido vai para **Revisão Humana**.
+- `RESET_BANCO=true`: reinicia o banco para gerar uma demonstração limpa em cada execução; altere para `false` para preservar os protocolos existentes e testar idempotência entre execuções.
 - `MODO_SIMULACAO_EMAIL=true`: **mantido como `true` por padrão** para permitir que qualquer avaliador rode o robô imediatamente sem precisar criar senhas SMTP. Os e-mails são salvos como arquivos `.txt` auditáveis na pasta `emails_enviados/`. *(Opcional: para disparo real via Gmail, altere para `false` e preencha `SMTP_USUARIO` e `SMTP_SENHA` com uma Senha de App).*
 
 ### Etapa 5: Executar o robô (Ponto de Entrada Único)
@@ -109,15 +111,15 @@ Após o término da execução (cerca de 2 a 5 segundos), confira os artefatos c
 | :--- | :--- | :--- |
 | **1. Tratamento de Arquivos e Dados (Pandas)** | Etapa inicial (`main.py`) na leitura do arquivo `dados_cidadaos.csv`. | Realiza a ingestão em lote, padroniza tipos de dados (preservando zeros à esquerda nos CEPs) e remove solicitações duplicadas na origem, garantindo **idempotência**. |
 | **2. Integração com APIs REST (ViaCEP)** | Etapa de enriquecimento (`servicos_rpa.py -> ServicoViaCEP`). | Consulta a base pública do ViaCEP com *timeout* (4s), *retry* com espera e cache em memória para validar o CEP e preencher logradouro, bairro e cidade/UF automaticamente. |
-| **3. Banco de Dados SQL (SQLite)** | Etapa de persistência (`servicos_rpa.py -> RepositorioProtocolosSQL`). | Armazena de forma estruturada e auditável os protocolos gerados, a classificação da IA, a fila de revisão humana e impede reprocessamento entre diferentes execuções. |
+| **3. Banco de Dados SQL (SQLite)** | Etapa de persistência (`servicos_rpa.py -> RepositorioProtocolosSQL`). | Armazena de forma estruturada e auditável os protocolos gerados e impede reprocessamento pelo `id_solicitacao`, inclusive entre execuções quando `RESET_BANCO=false`. |
 | **4. E-mail Automatizado (SMTP / Simulação)** | Etapa final de resposta (`servicos_rpa.py -> NotificadorEmailRPA`). | Fecha o ciclo de atendimento enviando ao cidadão o número de protocolo, o setor responsável e a prioridade estimada do chamado sem intervenção manual. |
 
 ---
 
 ## 5. Evidências de Validação e Resiliência
 Ao executar `python main.py` sobre a amostra sintética rotulada (`dados_cidadaos.csv`, 15 registros), o robô gera automaticamente o arquivo `relatorio_validacao.md` e o log `logs/execucao_rpa.log`, comprovando:
-- **Acurácia da IA na amostra rotulada:** 100% de acerto nos 12 registros válidos avaliados (11 classificações técnicas corretas + 1 detecção correta de ambiguidade na solicitação `SOL-012`, encaminhada para **Revisão Humana** por confiança abaixo do limiar de `0.55`).
-- **Idempotência:** O registro duplicado `SOL-001` é identificado e ignorado sem gerar protocolo duplicado.
+- **Acurácia da IA na amostra rotulada:** 50% de acerto nos 12 registros válidos avaliados (6 acertos e 6 erros). Solicitações ambíguas ou com confiança abaixo do limiar de `0.55`, incluindo `SOL-012`, são encaminhadas para **Revisão Humana**.
+- **Idempotência:** O registro duplicado `SOL-001` é identificado e ignorado na entrada; o banco também usa `id_solicitacao` como chave primária e impede reprocessamento entre execuções quando o reinício do banco está desativado.
 - **Tratamento de falhas previsíveis:**
   - *Arquivo ausente:* Simulado na inicialização (`arquivo_que_nao_existe.csv`), capturado via `FileNotFoundError` e registrado em log sem interromper o robô.
   - *CEP inexistente (`SOL-011`, CEP `99999999`):* Tratado pela API com fallback seguro (`CEP_NAO_ENCONTRADO`), mantendo o fluxo ativo.

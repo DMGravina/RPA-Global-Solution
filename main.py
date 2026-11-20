@@ -61,10 +61,11 @@ def executar_pipeline() -> None:
     arquivo_entrada = os.getenv("ARQUIVO_ENTRADA", "dados_cidadaos.csv")
     banco_sqlite = os.getenv("BANCO_SQLITE", "citizentech_rpa.db")
     limiar_ia = float(os.getenv("LIMIAR_CONFIANCA_IA", "0.55"))
+    reset_banco = os.getenv("RESET_BANCO", "true").lower() == "true"
     modo_sim_email = os.getenv("MODO_SIMULACAO_EMAIL", "true").lower() == "true"
 
-    # Reinicia banco de demonstração para execução limpa reproduzível
-    if os.path.exists(banco_sqlite):
+    # Reinicia o banco quando RESET_BANCO=true; false preserva os protocolos existentes.
+    if reset_banco and os.path.exists(banco_sqlite):
         os.remove(banco_sqlite)
 
     # Inicializa componentes
@@ -183,11 +184,31 @@ def executar_pipeline() -> None:
         )
 
     # 4. Geração do Relatório de Evidências de Validação
-    acuracia = (
-        (estatisticas["acertos_ia"] / estatisticas["avaliados_ia"]) * 100
-        if estatisticas["avaliados_ia"] > 0
-        else 0.0
-    )
+    registros_salvos = repo_sql.listar_protocolos()
+    registros_por_id = {registro["id_solicitacao"]: registro for registro in registros_salvos}
+    estatisticas["processados_sucesso"] = len(registros_por_id)
+
+    detalhes_avaliacao = []
+    acertos_ia = 0
+    avaliados_ia = 0
+    for linha in df_sem_duplicatas.itertuples(index=False):
+        id_sol = str(getattr(linha, "id_solicitacao", "")).strip()
+        esperado = str(getattr(linha, "categoria_esperada", "")).strip()
+        registro = registros_por_id.get(id_sol)
+        if not esperado or esperado == "nan" or registro is None:
+            continue
+        categoria_avaliada = registro["categoria_ia"]
+        avaliados_ia += 1
+        acertou = categoria_avaliada == esperado
+        if acertou:
+            acertos_ia += 1
+        detalhes_avaliacao.append(
+            f"| {id_sol} | {esperado} | {categoria_avaliada} | {float(registro['confianca_ia']):.2f} | {'Acerto' if acertou else 'Erro'} |"
+        )
+
+    estatisticas["acertos_ia"] = acertos_ia
+    estatisticas["avaliados_ia"] = avaliados_ia
+    acuracia = (acertos_ia / avaliados_ia * 100) if avaliados_ia > 0 else 0.0
 
     relatorio_md = f"""# Relatório de Execução e Evidências de Validação — CitizenTech RPA + IA
 **Data/Hora da Execução:** {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}

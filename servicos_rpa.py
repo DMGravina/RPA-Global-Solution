@@ -129,6 +129,16 @@ class RepositorioProtocolosSQL:
             ))
             conn.commit()
 
+    def listar_protocolos(self) -> list[Dict]:
+        with self._conectar() as conn:
+            conn.row_factory = sqlite3.Row
+            return [
+                dict(row)
+                for row in conn.execute(
+                    "SELECT * FROM protocolos_cidadaos ORDER BY id_solicitacao"
+                ).fetchall()
+            ]
+
 
 class NotificadorEmailRPA:
     """Tema RPA: Envio automatizado de e-mail ao cidadão com modo seguro de simulação."""
